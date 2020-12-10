@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="racksModelStoreContainer" CdmEntityContainer="rackModel">
+    <EntitySetMapping Name="rack_inventory">
+      <EntityTypeMapping TypeName="racksModel.rack_inventory">
+        <MappingFragment StoreEntitySet="rack_inventory">
+          <ScalarProperty Name="R_id" ColumnName="R_id" />
+          <ScalarProperty Name="R_desc" ColumnName="R_desc" />
+          <ScalarProperty Name="R_capacity" ColumnName="R_capacity" />
+          <ScalarProperty Name="R_status" ColumnName="R_status" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,33 @@
+<div class="forms-group">
+  <input
+    type="text"
+    class="form-control"
+    name="searchid"
+    placeholder="Search...By id"
+    style="width: 300px"
+    [(ngModel)]="searchid"
+  />
+</div>
+<br />
+
+<table class="table table-sm table-hover">
+  <tr>
+    <th *ngFor="let column of rackService.headers">
+      {{ column }}
+    </th>
+  </tr>
+  <tr *ngFor="let rack of rackService.rackList | filter: searchid">
+    <td>{{ rack.R_id }}</td>
+    <td>{{ rack.R_desc }}</td>
+    <td>{{ rack.R_capacity }}</td>
+    <td>{{ rack.R_status }}</td>
+    <td>
+      <a class="btn" (click)="showForEdit(rack)">
+        <i class="fa fa-pencil-square-o"></i>
+      </a>
+      <a class="btn text-danger" (click)="ondeleteRack(rack.R_id)">
+        <i class="fa fa-trash-o"></i>
+      </a>
+    </td>
+  </tr>
+</table>

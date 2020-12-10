@@ -1,0 +1,108 @@
+<form class="emp-form" #rackForm="ngForm" (ngSubmit)="onSubmit(rackForm)">
+  <div class="form-row">
+    <div class="form-group col-md6">
+      <input
+        type="number"
+        pattern="^(0?[1-9]|[1-9][0-9])$"
+        class="form-control"
+        name="R_id"
+        #R_id="ngModel"
+        [(ngModel)]="rackService.selectedRackInventory.R_id"
+        placeholder="Racks Code"
+        required
+      />
+      <div class="validaiton-error" *ngIf="R_id.errors?.pattern">
+        Enter Proper value [0-99] && no decimal values allowed
+      </div>
+      <div class="validaiton-error" *ngIf="R_id.invalid && R_id.touched">
+        This Field is Required.
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <input
+      class="form-control"
+      name="R_desc"
+      #R_desc="ngModel"
+      [(ngModel)]="rackService.selectedRackInventory.R_desc"
+      placeholder="Racks Description"
+      required
+    />
+    <div class="validaiton-error" *ngIf="R_desc.invalid && R_desc.touched">
+      This Field is Required.
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md6">
+      <input
+        class="form-control"
+        type="number"
+        name="R_capacity"
+        #R_capacity="ngModel"
+        [(ngModel)]="rackService.selectedRackInventory.R_capacity"
+        placeholder="Racks capacity"
+        required
+      />
+      <div
+        class="validaiton-error"
+        *ngIf="R_capacity.invalid && R_capacity.touched"
+      >
+        This field is required.
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md6">
+      <input
+        type="radio"
+        class="form-control"
+        name="R_status"
+        #RackCode="ngModel"
+        [(ngModel)]="rackService.selectedRackInventory.R_status"
+        value="DEFAULT"
+      />Default
+    </div>
+    <div class="form-group col-md8">
+      <input
+        type="radio"
+        class="form-control"
+        name="R_status"
+        #RackCode="ngModel"
+        [(ngModel)]="rackService.selectedRackInventory.R_status"
+        value="INACTIVE"
+      />Inactive
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md8">
+      <button
+        [disabled]="!rackForm.valid"
+        type="submit"
+        class="btn btn-lg btn-block btn-warning"
+      >
+        <i class="fa fa-plus-square"></i><br />Add
+      </button>
+    </div>
+    <div class="form-group col-md4">
+      <button
+        type="button"
+        class="btn btn-lg btn-block btn-danger"
+        (click)="resetForm(rackForm)"
+      >
+        <i class="fa fa-window-close"></i><br />Cancel
+      </button>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md8">
+        <button
+          [disabled]="!rackForm.valid"
+          type="button"
+          class="btn btn-lg btn-block btn-warning"
+          (click)="onUpdate(rackForm)"
+        >
+          <i class="fa fa-plus-square"></i><br />Update
+        </button>
+      </div>
+    </div>
+  </div>
+</form>
